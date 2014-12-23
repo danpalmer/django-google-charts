@@ -31,5 +31,8 @@ class Chart(object):
               "data-chart-url='{1}'"
             "></div>",
             json.dumps(self.options),
-            reverse('charts:chart-data', args=(self.chart_slug,)),
+            reverse(
+                'djgc-chart-data',
+                args=(self.chart_slug,),
+            ),
         )
