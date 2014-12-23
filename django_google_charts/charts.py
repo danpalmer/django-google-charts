@@ -1,6 +1,6 @@
-import six
 import json
 
+from django.utils import six
 from django.utils.html import format_html, mark_safe
 from django.core.urlresolvers import reverse
 from django.utils.encoding import python_2_unicode_compatible
