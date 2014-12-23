@@ -24,7 +24,7 @@ class Chart(object):
     def get_data(self):
         raise NotImplementedError
 
-    def to_html(self):
+    def __str__(self):
         return format_html(
             "<div "
               "data-chart-options='{0}'"
