@@ -3,6 +3,7 @@ import json
 
 from django.core.urlresolvers import reverse
 from django.utils.html import format_html, mark_safe
+from django.utils.encoding import python_2_unicode_compatible
 
 CHARTS = {}
 
@@ -16,6 +17,7 @@ class ChartMeta(type):
         return klass
 
 @six.add_metaclass(ChartMeta)
+@python_2_unicode_compatible
 class Chart(object):
     options = {}
     chart_slug = None
