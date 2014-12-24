@@ -7,8 +7,8 @@ $(document).ready(function() {
   }
 
   function drawChart(chartElement) {
-    var options = chartElement.getAttribute('data-chart-options');
-    var url = chartElement.getAttribute('data-chart-url');
+    var options = $(chartElement).data('chart-options');
+    var url = $(chartElement).data('chart-url');
 
     $.getJSON(url, function(data) {
       var dataTable = new google.visualization.DataTable();
@@ -38,7 +38,7 @@ $(document).ready(function() {
       }
 
       var chart = new google.visualization.LineChart(chartElement);
-      chart.draw(dataTable, JSON.parse(options));
+      chart.draw(dataTable, options);
     });
   }
 
