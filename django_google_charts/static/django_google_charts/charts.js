@@ -43,7 +43,6 @@ $(document).ready(function() {
     });
   }
 
-  // google.load("visualization", "1", {packages:["corechart"]});
   google.setOnLoadCallback(drawCharts);
 
 });
