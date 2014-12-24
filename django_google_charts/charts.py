@@ -16,7 +16,7 @@ class Chart(object):
     def chart_id(self):
         return str(hash(self))
 
-    def render(self):
+    def to_html(self):
         data = {
             'cols': self.columns,
             'rows': list(self.get_data()),
@@ -36,7 +36,7 @@ class Chart(object):
         )
 
     def __str__(self):
-        return self.render()
+        return self.to_html()
 
     def __unicode__(self):
-        return self.render()
+        return self.to_html()
