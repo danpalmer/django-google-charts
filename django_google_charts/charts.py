@@ -4,6 +4,7 @@ from django.utils import six
 from django.utils.html import format_html
 from django.core.urlresolvers import reverse
 from django.utils.encoding import python_2_unicode_compatible
+from django.contrib.staticfiles.storage import staticfiles_storage
 
 CHARTS = {}
 
@@ -34,10 +35,12 @@ class Chart(object):
             "<div "
                 "data-chart-options='{0}'"
                 "data-chart-url='{1}'"
+                "data-loading-image='{2}'"
             "></div>",
             json.dumps(self.options),
             reverse(
                 'djgc-chart-data',
                 args=(self.chart_slug,),
             ),
+            staticfiles_storage.url('django_google_charts/ajax.gif'),
         )

@@ -9,6 +9,20 @@ $(document).ready(function() {
   function drawChart(chartElement) {
     var options = $(chartElement).data('chart-options');
     var url = $(chartElement).data('chart-url');
+    var loadingGif = $(chartElement).data('loading-image');
+
+    var height = options.height;
+    if (!height) {
+      height = '200px';
+    }
+
+    $(chartElement).css({
+      'height': height,
+      'background-image': 'url(' + loadingGif + ')',
+      'background-size': '32px 32px',
+      'background-repeat': 'no-repeat',
+      'background-position': 'center',
+    });
 
     $.getJSON(url, function(data) {
       var dataTable = new google.visualization.DataTable();
