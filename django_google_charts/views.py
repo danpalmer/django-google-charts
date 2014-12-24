@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from .utils import DateTimeEncoder
 from .charts import CHARTS
 
+
 def chart_data(request, chart_slug):
     chart = CHARTS[chart_slug]()
 

@@ -2,7 +2,9 @@ import json
 import calendar
 import datetime
 
+
 class DateTimeEncoder(json.JSONEncoder):
+
     def default(self, obj):
 
         # Serialise DateTimes to a number of milliseconds to be parsed in JS

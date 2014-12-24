@@ -1,13 +1,15 @@
 import json
 
 from django.utils import six
-from django.utils.html import format_html, mark_safe
+from django.utils.html import format_html
 from django.core.urlresolvers import reverse
 from django.utils.encoding import python_2_unicode_compatible
 
 CHARTS = {}
 
+
 class ChartMeta(type):
+
     def __new__(cls, name, bases, attrs):
         klass = super(ChartMeta, cls).__new__(cls, name, bases, attrs)
 
@@ -15,6 +17,7 @@ class ChartMeta(type):
             CHARTS[klass.chart_slug] = klass
 
         return klass
+
 
 @six.add_metaclass(ChartMeta)
 @python_2_unicode_compatible
@@ -29,8 +32,8 @@ class Chart(object):
     def __str__(self):
         return format_html(
             "<div "
-              "data-chart-options='{0}'"
-              "data-chart-url='{1}'"
+                "data-chart-options='{0}'"
+                "data-chart-url='{1}'"
             "></div>",
             json.dumps(self.options),
             reverse(

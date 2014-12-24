@@ -9,6 +9,7 @@ from django.core.urlresolvers import clear_url_caches, reverse, NoReverseMatch
 
 from . import urls
 
+
 def patch_urlconf():
     try:
         reverse('djgc-chart-data', args=('chart_slug',))
