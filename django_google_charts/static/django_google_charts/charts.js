@@ -39,7 +39,7 @@ $(document).ready(function() {
       }
 
       var chart = new google.visualization.LineChart(chartElement);
-      chart.draw(dataTable, {});
+      chart.draw(dataTable, JSON.parse(options));
     });
   }
 
