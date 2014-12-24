@@ -1,12 +1,10 @@
 import json
 
 from django.utils.html import format_html, mark_safe
-from django.utils.encoding import python_2_unicode_compatible
 
 from .utils import DateTimeEncoder
 
 
-@python_2_unicode_compatible
 class Chart(object):
     options = {}
     chart_slug = None
@@ -18,7 +16,7 @@ class Chart(object):
     def chart_id(self):
         return str(hash(self))
 
-    def __str__(self):
+    def render(self):
         data = {
             'cols': self.columns,
             'rows': list(self.get_data()),
@@ -36,3 +34,9 @@ class Chart(object):
             mark_safe(json_data),
             json.dumps(self.options),
         )
+
+    def __str__(self):
+        return self.render()
+
+    def __unicode__(self):
+        return self.render()
