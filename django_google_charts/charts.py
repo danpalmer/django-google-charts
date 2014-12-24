@@ -1,6 +1,6 @@
 import json
 
-from django.utils.html import format_html
+from django.utils.html import format_html, mark_safe
 from django.utils.encoding import python_2_unicode_compatible
 
 from .utils import DateTimeEncoder
@@ -33,6 +33,6 @@ class Chart(object):
                 "data-chart-id='{0}'"
             "></div>",
             self.chart_id(),
-            json_data,
+            mark_safe(json_data),
             json.dumps(self.options),
         )

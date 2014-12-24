@@ -1,30 +1,18 @@
 $(document).ready(function() {
 
   function drawCharts() {
-    $('[data-chart-url]').each(function() {
+    $('[data-chart-id]').each(function() {
       drawChart(this);
     });
   }
 
   function drawChart(chartElement) {
     var options = $(chartElement).data('chart-options');
-    var url = $(chartElement).data('chart-url');
-    var loadingGif = $(chartElement).data('loading-image');
+    var chartId = $(chartElement).data('chart-id');
 
-    var height = options.height;
-    if (!height) {
-      height = '200px';
-    }
+    var dataText = $('#' + chartId).text();
+    var data = JSON.parse(dataText);
 
-    $(chartElement).css({
-      'height': height,
-      'background-image': 'url(' + loadingGif + ')',
-      'background-size': '32px 32px',
-      'background-repeat': 'no-repeat',
-      'background-position': 'center',
-    });
-
-    $.getJSON(url, function(data) {
       var dataTable = new google.visualization.DataTable();
 
       var types = [];
@@ -53,7 +41,6 @@ $(document).ready(function() {
 
       var chart = new google.visualization.LineChart(chartElement);
       chart.draw(dataTable, options);
-    });
   }
 
   google.setOnLoadCallback(drawCharts);
