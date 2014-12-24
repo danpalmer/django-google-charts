@@ -1,10 +1,9 @@
 $(document).ready(function() {
 
   function drawCharts() {
-    var elements = document.querySelectorAll('[data-chart-url]');
-    for (var i = 0; i < elements.length; i++) {
-      drawChart(elements[i]);
-    }
+    $('[data-chart-url]').each(function() {
+      drawChart(this);
+    });
   }
 
   function drawChart(chartElement) {
