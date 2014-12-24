@@ -1,26 +1,9 @@
 import json
 
-from django.utils import six
 from django.utils.html import format_html
-from django.core.urlresolvers import reverse
 from django.utils.encoding import python_2_unicode_compatible
-from django.contrib.staticfiles.storage import staticfiles_storage
-
-CHARTS = {}
 
 
-class ChartMeta(type):
-
-    def __new__(cls, name, bases, attrs):
-        klass = super(ChartMeta, cls).__new__(cls, name, bases, attrs)
-
-        if klass.chart_slug:
-            CHARTS[klass.chart_slug] = klass
-
-        return klass
-
-
-@six.add_metaclass(ChartMeta)
 @python_2_unicode_compatible
 class Chart(object):
     options = {}
@@ -30,17 +13,13 @@ class Chart(object):
     def get_data(self):
         raise NotImplementedError
 
+    def slug(self):
+        return str(hash(self))
+
     def __str__(self):
         return format_html(
             "<div "
                 "data-chart-options='{0}'"
-                "data-chart-url='{1}'"
-                "data-loading-image='{2}'"
             "></div>",
             json.dumps(self.options),
-            reverse(
-                'djgc-chart-data',
-                args=(self.chart_slug,),
-            ),
-            staticfiles_storage.url('django_google_charts/ajax.gif'),
         )
