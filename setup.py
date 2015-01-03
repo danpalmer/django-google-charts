@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name="django-google-charts",
-    version="0.1.4",
+    version="0.1.5",
     author="Dan Palmer",
     author_email="dan@danpalmer.me",
     packages=[
