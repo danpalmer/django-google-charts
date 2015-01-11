@@ -3,7 +3,6 @@ python: 2.7
 env:
   - TOXENV=py27
   - TOXENV=py34
-  - TOXENV=py33
   - TOXENV=pep8
 install:
   - pip install tox
