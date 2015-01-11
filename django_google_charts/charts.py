@@ -1,5 +1,7 @@
 import json
 
+from abc import abstractmethod
+
 from django.utils.html import format_html, mark_safe
 
 from .utils import DateTimeEncoder, OptionsDict
@@ -9,6 +11,7 @@ class Chart(object):
     options = OptionsDict()
     columns = None
 
+    @abstractmethod
     def get_data(self):
         raise NotImplementedError
 
