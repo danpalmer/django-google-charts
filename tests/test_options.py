@@ -1,6 +1,6 @@
 import unittest
 
-from .utils import OptionsDict
+from django_google_charts.utils import OptionsDict
 
 
 class OptionsTests(unittest.TestCase):
