@@ -10,7 +10,14 @@ def django_google_chart_js():
 
     return format_html(
         """
-        <script type="text/javascript" src="https://www.google.com/jsapi?autoload={{'modules':[{{'name':'visualization','version':'1','packages':['corechart']}}]}}"></script>
+        <script type="text/javascript"
+            src="https://www.google.com/jsapi?autoload={
+                {'modules':[{{
+                    'name':'visualization',
+                    'version':'1',
+                    'packages':['corechart']
+                }}]}}">
+        </script>
         <script type="text/javascript" src="{0}"></script>
         """,
         chart_js_url,
