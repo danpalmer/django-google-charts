@@ -7,7 +7,6 @@ from .utils import DateTimeEncoder, OptionsDict
 
 class Chart(object):
     options = OptionsDict()
-    chart_slug = None
     columns = None
 
     def get_data(self):
