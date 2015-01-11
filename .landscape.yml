@@ -1,0 +1,6 @@
+test-warnings: yes
+strictness: veryhigh
+requirements:
+    - django
+uses:
+	- django
