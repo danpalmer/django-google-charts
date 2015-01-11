@@ -25,3 +25,33 @@ class DateTimeEncoder(json.JSONEncoder):
             encoded_object = json.JSONEncoder.default(self, obj)
 
         return encoded_object
+
+
+class OptionsDict(dict):
+
+    __setattr__ = dict.__setitem__
+    __delattr__ = dict.__delitem__
+
+    def __getattr__(self, attr):
+        value = self.get(attr)
+
+        if isinstance(value, dict):
+            value = OptionsDict(value)
+            self[attr] = value
+
+        return value
+
+    def merge(self, new):
+        iterator = new.iteritems()
+        self.recursive_merge(iterator)
+
+    def recursive_merge(self, iterator):
+        for (key, value) in iterator:
+            if (
+                key in self
+                and isinstance(self[key], dict) and isinstance(value, dict)
+            ):
+                self[key] = OptionsDict(self[key])
+                self[key].merge(value)
+            else:
+                self[key] = value
