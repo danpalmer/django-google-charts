@@ -2,11 +2,11 @@ import json
 
 from django.utils.html import format_html, mark_safe
 
-from .utils import DateTimeEncoder
+from .utils import DateTimeEncoder, OptionsDict
 
 
 class Chart(object):
-    options = {}
+    options = OptionsDict()
     chart_slug = None
     columns = None
 
