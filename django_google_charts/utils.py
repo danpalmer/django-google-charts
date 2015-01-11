@@ -42,7 +42,7 @@ class OptionsDict(dict):
         return value
 
     def merge(self, new):
-        iterator = new.iteritems()
+        iterator = new.items()
         self.recursive_merge(iterator)
 
     def recursive_merge(self, iterator):
