@@ -101,4 +101,3 @@ class SparklineChart(Chart):
 
 class SteppedAreaChart(Chart):
     chart_type = 'SteppedAreaChart'
-
