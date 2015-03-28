@@ -10,6 +10,7 @@ from .utils import DateTimeEncoder, OptionsDict
 class Chart(object):
     options = OptionsDict()
     columns = None
+    chart_type = 'LineChart'
 
     @abstractmethod
     def get_data(self):
@@ -31,10 +32,12 @@ class Chart(object):
             "<div "
                 "data-chart-options='{2}'"
                 "data-chart-id='{0}'"
+                "data-chart-type='{3}'"
             "></div>",
             self.chart_id(),
             mark_safe(json_data),
             json.dumps(self.options),
+            self.chart_type,
         )
 
     def __str__(self):
@@ -42,3 +45,60 @@ class Chart(object):
 
     def __unicode__(self):
         return self.to_html()
+
+
+# class ComboChart(Chart):
+#     chart_type = 'ComboChart'
+
+
+class LineChart(Chart):
+    chart_type = 'LineChart'
+
+
+class GeoChart(Chart):
+    chart_type = 'GeoChart'
+
+
+class CoreChart(Chart):
+    chart_type = 'CoreChart'
+
+
+class AreaChart(Chart):
+    chart_type = 'AreaChart'
+
+
+class BarChart(Chart):
+    chart_type = 'BarChart'
+
+
+class BubbleChart(Chart):
+    chart_type = 'BubbleChart'
+
+
+class CandlestickChart(Chart):
+    chart_type = 'CandlestickChart'
+
+
+class Histogram(Chart):
+    chart_type = 'Histogram'
+
+
+class ColumnChart(Chart):
+    chart_type = 'ColumnChart'
+
+
+class PieChart(Chart):
+    chart_type = 'PieChart'
+
+
+class ScatterChart(Chart):
+    chart_type = 'ScatterChart'
+
+
+class SparklineChart(Chart):
+    chart_type = 'SparklineChart'
+
+
+class SteppedAreaChart(Chart):
+    chart_type = 'SteppedAreaChart'
+

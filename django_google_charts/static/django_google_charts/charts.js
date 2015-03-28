@@ -9,6 +9,7 @@ $(document).ready(function() {
   function drawChart(chartElement) {
     var options = $(chartElement).data('chart-options');
     var chartId = $(chartElement).data('chart-id');
+    var chartType = $(chartElement).data('chart-type');
 
     var dataText = $('#' + chartId).text();
     var data = JSON.parse(dataText);
@@ -39,7 +40,7 @@ $(document).ready(function() {
       dataTable.addRow(formattedRow);
     }
 
-    var chart = new google.visualization.LineChart(chartElement);
+    var chart = new google.visualization[chartType](chartElement);
     chart.draw(dataTable, options);
   }
 

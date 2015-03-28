@@ -28,6 +28,14 @@ def test_chart_element_rendering():
     assert re.search(r'data-chart-id=\'.+?\'', chart_html)
 
 
+def test_chart_type():
+    chart = TestChart()
+    chart.chart_type = 'SteppedAreaChart'
+    chart_html = chart.to_html()
+
+    assert re.search(r'data-chart-type=\'SteppedAreaChart\'', chart_html)
+
+
 def test_chart_safe_string():
     chart = TestChart()
     chart_html = chart.to_html()
