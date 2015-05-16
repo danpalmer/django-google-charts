@@ -1,7 +1,7 @@
 import json
 
 from django import template
-from django.utils.html import format_html, mark_safe
+from django.utils.html import format_html
 from django.contrib.staticfiles.storage import staticfiles_storage
 
 register = template.Library()
@@ -18,7 +18,7 @@ def django_google_chart_js():
                 'packages': ['corechart'],
             },
         ],
-    }).replace('"', '\"')
+    })
 
     return format_html(
         """
@@ -27,7 +27,7 @@ def django_google_chart_js():
         </script>
         <script type="text/javascript" src="{1}"></script>
         """,
-        mark_safe(autoload),
+        autoload,
         chart_js_url,
     )
 
