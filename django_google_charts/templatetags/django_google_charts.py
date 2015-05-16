@@ -18,7 +18,7 @@ def django_google_chart_js():
                 'packages': ['corechart'],
             },
         ],
-    })
+    }).replace('"', '\"')
 
     return format_html(
         """
