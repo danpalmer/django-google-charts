@@ -30,30 +30,30 @@ def test_adding_dict():
     assert options.x.y == value
 
 
-def test_options_merge():
+def test_options_inherit():
     options = OptionsDict({'overridden': 1, 'kept': 1})
     suboptions = OptionsDict({'overridden': 2, 'new': 1})
 
-    options.merge(suboptions)
+    suboptions.inherit(options)
 
-    assert options == {
+    assert suboptions == {
         'overridden': 2,
         'new': 1,
         'kept': 1,
     }
 
 
-def test_options_recursive_merge():
+def test_options_recursive_inherit():
     options = OptionsDict({
         'key': {
-            'subkey': {'subsubkey': 1},
-            'kept': 1,
+            'subkey': {'subsubkey': 2},
         },
     })
 
-    options.merge(OptionsDict({
+    options.inherit(OptionsDict({
         'key': {
-            'subkey': {'subsubkey': 2},
+            'subkey': {'subsubkey': 1},
+            'kept': 1,
         },
     }))
 

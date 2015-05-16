@@ -41,17 +41,17 @@ class OptionsDict(dict):
 
         return value
 
-    def merge(self, new):
+    def inherit(self, new):
         iterator = new.items()
-        self.recursive_merge(iterator)
+        self.recursive_inherit(iterator)
 
-    def recursive_merge(self, iterator):
+    def recursive_inherit(self, iterator):
         for (key, value) in iterator:
             if (
                 key in self
                 and isinstance(self[key], dict) and isinstance(value, dict)
             ):
                 self[key] = OptionsDict(self[key])
-                self[key].merge(value)
-            else:
+                self[key].inherit(value)
+            elif key not in self:
                 self[key] = value
