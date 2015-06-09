@@ -9,13 +9,13 @@ from .utils import DateTimeEncoder, OptionsDict
 
 
 class ChartMeta(type):
-    def __new__(mcs, name, bases, attrs):
+    def __new__(cls, name, bases, attrs):
         if 'options' in attrs:
             options = OptionsDict(attrs['options'])
             options.inherit(getattr(bases[0], 'options', {}))
             attrs['options'] = options
 
-        return super(ChartMeta, mcs).__new__(mcs, name, bases, attrs)
+        return super(ChartMeta, cls).__new__(cls, name, bases, attrs)
 
 
 class Chart(with_metaclass(ChartMeta, object)):
