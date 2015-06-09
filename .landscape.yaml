@@ -3,4 +3,4 @@ test-warnings: yes
 strictness: veryhigh
 max-line-length: 80
 uses:
-	- django
+  - django
