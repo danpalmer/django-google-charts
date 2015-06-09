@@ -41,9 +41,9 @@ class Chart(with_metaclass(ChartMeta, object)):
         return format_html(
             "<script type='text/json' id='{0}'>{1}</script>"
             "<div "
-                "data-chart-options='{2}'"
-                "data-chart-id='{0}'"
-                "data-chart-type='{3}'"
+            "data-chart-options='{2}'"
+            "data-chart-id='{0}'"
+            "data-chart-type='{3}'"
             "></div>",
             self.chart_id(),
             mark_safe(json_data),
